@@ -2,6 +2,7 @@ import { useState } from "react";
 import Chat from "./Chat";
 import Rooms from "./Rooms";
 import User from "./User";
+import Header from "./Header";
 
 enum display{
     CHAT,
@@ -28,7 +29,7 @@ export default function App() {
     //
 	return (
 		<div className="h-screen grid grid-rows-[min-content_1fr]">
-			<header className="bg-emerald-500">Header</header>
+			<Header/>
 			<div className={`grid transition-[grid-template-columns] ${classHandler}`}>
                 <User/>
 				<Rooms/>
