@@ -1,7 +1,7 @@
 import { useState } from "react";
 import Chat from "./Chat";
 import Rooms from "./Rooms";
-import User from "./Users";
+import User from "./User";
 
 enum display{
     CHAT,
