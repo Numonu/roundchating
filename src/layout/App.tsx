@@ -4,7 +4,7 @@ import Rooms from "./Rooms";
 import User from "./User";
 import Header from "./Header";
 
-enum Display {
+export enum Display {
 	CHAT = "chat",
 	ROOMS = "rooms",
 	USER = "user",
