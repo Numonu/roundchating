@@ -1,7 +1,7 @@
 import { useContext } from "react";
 import { BiLeftArrow } from "react-icons/bi";
 import { FiMoreVertical } from "react-icons/fi";
-import { Display, ISceneContextProps, SceneContext } from "./App";
+import { Display, ISceneContextProps, SceneContext } from "../context/SceneProvider";
 export default function Header() {
 	const { scene, setScene } = useContext(SceneContext) as ISceneContextProps;
     //
