@@ -20,13 +20,13 @@ export default function App() {
 	let classHandler;
 	switch (scene) {
 		case Display.USER:
-			classHandler = "grid-cols-[1fr_0fr_0fr]";
+			classHandler = "grid-cols-[1fr_0fr_0fr] md:grid-cols-[1fr_0fr_2fr] xl:grid-cols-[1fr_1fr_3fr]";
 			break;
 		case Display.ROOMS:
-			classHandler = "grid-cols-[0fr_1fr_0fr]";
+			classHandler = "grid-cols-[0fr_1fr_0fr] md:grid-cols-[0fr_1fr_2fr] xl:grid-cols-[1fr_1fr_3fr]";
 			break;
 		case Display.CHAT:
-			classHandler = "grid-cols-[0fr_0fr_1fr]";
+			classHandler = "grid-cols-[0fr_0fr_1fr] md:grid-cols-[0fr_0fr_2fr] xl:grid-cols-[1fr_1fr_3fr]";
 			break;
 		default:
 			break;
