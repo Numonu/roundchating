@@ -5,15 +5,15 @@ import User from "./User";
 import Header from "./Header";
 
 enum Display {
-	CHAT,
-	ROOMS,
-	USER,
+	CHAT = "chat",
+	ROOMS = "rooms",
+	USER = "user",
 }
-interface ISceneContextProps {
+export interface ISceneContextProps {
     setScene: React.Dispatch<React.SetStateAction<Display>>;
     scene: Display;
 }
-const SceneContext = createContext<ISceneContextProps | null>(null);
+export const SceneContext = createContext<ISceneContextProps | null>(null);
 export default function App() {
 	const [scene, setScene] = useState<Display>(Display.CHAT);
 	//
