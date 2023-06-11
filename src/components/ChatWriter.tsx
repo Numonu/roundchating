@@ -1,4 +1,4 @@
-import { collection, serverTimestamp, addDoc } from "firebase/firestore/lite";
+import { collection, serverTimestamp, addDoc } from "firebase/firestore";
 import { db } from "../firebase/config";
 import { useState } from "react";
 
