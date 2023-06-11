@@ -1,4 +1,4 @@
-import { collection, serverTimestamp, addDoc, updateDoc, doc } from "firebase/firestore";
+import { collection, serverTimestamp, addDoc, updateDoc, doc, getDoc, setDoc } from "firebase/firestore";
 import { db } from "../firebase/config";
 import { useState , useContext} from "react";
 import { IRoomContextProps, RoomContext } from "../context/RoomProvider";
@@ -8,9 +8,22 @@ export default function ChatWriter() {
 	const [message, setMessage] = useState<string>("");
 
 	const updateStatus = async () => {
-		await updateDoc(doc(db , room , "status"), {
-			timestamp : serverTimestamp()
-		});
+		const docRef = doc(db, room, "status");
+		const docSnap = await getDoc(docRef);
+		if(docSnap.exists()){
+			await updateDoc(docRef, {
+				timestamp : serverTimestamp()
+			});
+		}
+		else{
+			try {
+				await setDoc(doc(db , room , "status") , {
+					lastupdate : serverTimestamp()
+				})
+			} catch (error) {
+				return null;
+			}
+		}
 	}
 
 	const sendMessage = async () => {
