@@ -1,5 +1,5 @@
-import ChatBody from "../components/ChatBody";
-import ChatWriter from "../components/ChatWriter";
+import ChatBody from "../components/chat/ChatBody";
+import ChatWriter from "../components/chat/ChatWriter";
 
 export default function Chat() {
 	
