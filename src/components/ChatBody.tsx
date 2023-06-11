@@ -1,4 +1,4 @@
-import { collection, getDocs, orderBy, query } from "firebase/firestore/lite";
+import { onSnapshot , doc , collection, getDocs, orderBy, query} from "firebase/firestore";
 import { db } from "../firebase/config";
 import { useEffect, useState } from "react";
 
@@ -9,7 +9,8 @@ type Message = {
 }
 export default function ChatBody() {
 	const [messages , setMessages] = useState<Message[]>([]);
-	useEffect(() => {
+
+	const requestMessages = () => {
 		const q = query(collection(db, "Global"), orderBy("timestamp", "asc"));
 		const result:Message[] = [];
 		getDocs(q).then((querySnapshot) => {
@@ -18,7 +19,15 @@ export default function ChatBody() {
 			});
 			setMessages(result);
 		});
-	}, []);
+	}
+
+	useEffect(requestMessages, []);
+	useEffect(() => {
+		const unsub = onSnapshot(doc(db, "Global", "status"), requestMessages);
+		return unsub;
+	} , [])
+
+
 	return <div>
 		{
 			messages.map(e => {
