@@ -1,19 +1,21 @@
 import { collection, serverTimestamp, addDoc, updateDoc, doc } from "firebase/firestore";
 import { db } from "../firebase/config";
-import { useState } from "react";
+import { useState , useContext} from "react";
+import { IRoomContextProps, RoomContext } from "../context/RoomProvider";
 
 export default function ChatWriter() {
+	const { room } = useContext(RoomContext) as IRoomContextProps;
 	const [message, setMessage] = useState<string>("");
 
 	const updateStatus = async () => {
-		await updateDoc(doc(db , "Global" , "status"), {
+		await updateDoc(doc(db , room , "status"), {
 			timestamp : serverTimestamp()
 		});
 	}
 
 	const sendMessage = async () => {
 		try {
-			await addDoc(collection(db, "Global"), {
+			await addDoc(collection(db, room), {
 				message,
 				owner: "admin",
 				timestamp: serverTimestamp(),

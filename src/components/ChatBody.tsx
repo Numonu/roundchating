@@ -1,6 +1,7 @@
 import { onSnapshot , doc , collection, getDocs, orderBy, query} from "firebase/firestore";
 import { db } from "../firebase/config";
-import { useEffect, useState } from "react";
+import { useEffect, useState , useContext } from "react";
+import { IRoomContextProps, RoomContext } from "../context/RoomProvider";
 
 type Message = {
 	owner : string,
@@ -8,10 +9,11 @@ type Message = {
 	timestamp : string
 }
 export default function ChatBody() {
+	const {room} = useContext(RoomContext) as IRoomContextProps;
 	const [messages , setMessages] = useState<Message[]>([]);
 
 	const requestMessages = () => {
-		const q = query(collection(db, "Global"), orderBy("timestamp", "asc"));
+		const q = query(collection(db, room), orderBy("timestamp", "asc"));
 		const result:Message[] = [];
 		getDocs(q).then((querySnapshot) => {
 			querySnapshot.forEach((doc) => {
@@ -21,11 +23,11 @@ export default function ChatBody() {
 		});
 	}
 
-	useEffect(requestMessages, []);
+	useEffect(requestMessages, [room]);
 	useEffect(() => {
-		const unsub = onSnapshot(doc(db, "Global", "status"), requestMessages);
+		const unsub = onSnapshot(doc(db, room, "status"), requestMessages);
 		return unsub;
-	} , [])
+	} , [room])
 
 
 	return <div>
