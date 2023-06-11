@@ -1,9 +1,15 @@
-import { collection, serverTimestamp, addDoc } from "firebase/firestore";
+import { collection, serverTimestamp, addDoc, updateDoc, doc } from "firebase/firestore";
 import { db } from "../firebase/config";
 import { useState } from "react";
 
 export default function ChatWriter() {
 	const [message, setMessage] = useState<string>("");
+
+	const updateStatus = async () => {
+		await updateDoc(doc(db , "Global" , "status"), {
+			timestamp : serverTimestamp()
+		});
+	}
 
 	const sendMessage = async () => {
 		try {
@@ -12,6 +18,7 @@ export default function ChatWriter() {
 				owner: "admin",
 				timestamp: serverTimestamp(),
 			});
+			await updateStatus();
 			setMessage("");
 		} catch (error) {
 			return null;
