@@ -3,6 +3,7 @@ import Chat from "../layout/Chat";
 import Rooms from "../layout/Rooms";
 import User from "../layout/User";
 import { ISceneContextProps, SceneContext } from "../context/SceneProvider";
+import RoomProvider from "../context/RoomProvider";
 
 export default function FluidGrid() {
 	const { classHandler } = useContext(SceneContext) as ISceneContextProps;
@@ -11,8 +12,10 @@ export default function FluidGrid() {
 			className={`grid transition-[grid-template-columns] ${classHandler}`}
 		>
 			<User />
-			<Rooms />
-			<Chat />
+			<RoomProvider>
+				<Rooms />
+				<Chat />
+			</RoomProvider>
 		</div>
 	);
 }
