@@ -17,7 +17,7 @@ export default function Rooms() {
 	};
 
 	return (
-		<div className="bg-pink-500 overflow-hidden">
+		<div className="bg-zinc-900 overflow-hidden">
 			<div>
 				<input type="text" placeholder="Searh Some Room" />
 			</div>

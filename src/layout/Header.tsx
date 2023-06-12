@@ -21,7 +21,7 @@ export default function Header() {
 	}
 
 	return (
-		<header className="bg-sky-400 p-2 flex justify-between">
+		<header className="bg-gradient-to-r from-indigo-600 to-indigo-500 p-2 flex justify-between">
 			<button
 				className="flex items-center gap-2 text-xl cursor-pointer"
 				onClick={functionHanlder}

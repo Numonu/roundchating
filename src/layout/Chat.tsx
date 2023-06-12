@@ -4,7 +4,7 @@ import ChatWriter from "../components/chat/ChatWriter";
 export default function Chat() {
 	
 	return (
-		<div className="bg-emerald-500 grid grid-rows-[min-content_1fr_min-content] overflow-hidden">
+		<div className="bg-zinc-800 grid grid-rows-[min-content_1fr_min-content] overflow-hidden">
 			<div className="bg-red-500">Search</div>
 			<ChatBody/>
 			<ChatWriter/>

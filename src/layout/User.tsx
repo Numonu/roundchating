@@ -8,7 +8,7 @@ export default function User() {
 	const { user } = useContext(UserContext) as IUserContextProps;
 
 	return (
-		<div className="bg-neutral-50 overflow-hidden">
+		<div className="bg-gradient-to-t from-zinc-950 to-zinc-900 overflow-hidden">
 			<div className="px-4">
 				<UserBoard />
 				{user ? <UserNav /> : <UserForms />}
