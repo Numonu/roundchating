@@ -1,4 +1,9 @@
+import { useContext } from "react";
+import { IUserContextProps, UserContext } from "../../context/UserProvider";
+
 export default function UserBoard() {
+	const {user} = useContext(UserContext) as IUserContextProps;
+	const usernameHandler = user && (user.displayName || user?.email);
 	return (
 			<div className="flex flex-col items-center py-8">
 				<img
@@ -6,7 +11,7 @@ export default function UserBoard() {
 					src="https://robohash.org/leidy.png"
 					alt="user profile"
 				/>
-				<h1 className="text-xl opacity-70">@Anonymous</h1>
+				<h1 className="text-xl opacity-70">{usernameHandler ?? "@Anonymous"}</h1>
 				<h2 className="text-emerald-300 text-lg font-medium">Online</h2>
 				<p className="text-red-300 text-center mb-4">
 					Inicia sesion o crea una nueva cuenta para acceder! 🐱‍🚀
