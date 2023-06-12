@@ -2,20 +2,24 @@ import { useContext } from "react";
 import { IUserContextProps, UserContext } from "../../context/UserProvider";
 
 export default function UserBoard() {
-	const {user} = useContext(UserContext) as IUserContextProps;
+	const { user } = useContext(UserContext) as IUserContextProps;
 	const usernameHandler = user && (user.displayName || user?.email);
 	return (
-			<div className="flex flex-col items-center py-8">
+		<div className="flex flex-col items-center py-8">
+			<div className="bg-gradient-to-t from-pink-500 via-red-500 via-orange-500 to-yellow-500 w-1/3 mb-4 p-1 max-w-[200px] aspect-square rounded-full">
 				<img
-					className="bg-red-500 w-1/3 mb-4 max-w-[200px] aspect-square rounded-full"
+					className="bg-zinc-800 rounded-full"
 					src="https://robohash.org/leidy.png"
 					alt="user profile"
 				/>
-				<h1 className="text-xl opacity-70">{usernameHandler ?? "@Anonymous"}</h1>
-				<h2 className="text-emerald-300 text-lg font-medium">Online</h2>
-				<p className="text-red-300 text-center mb-4">
-					Inicia sesion o crea una nueva cuenta para acceder! 🐱‍🚀
-				</p>
 			</div>
+			<h1 className="text-xl opacity-70">
+				{usernameHandler ?? "@Anonymous"}
+			</h1>
+			<h2 className="text-emerald-300 text-lg font-medium">Online</h2>
+			<p className="text-red-300 text-center mb-4">
+				Inicia sesion o crea una nueva cuenta para acceder! 🐱‍🚀
+			</p>
+		</div>
 	);
 }
