@@ -18,10 +18,10 @@ export default function SceneProvider({children}:{children:ReactNode}){
 	let classHandler;
 	switch (scene) {
 		case Display.USER:
-			classHandler = "grid-cols-[1fr_0fr_0fr] sm:grid-cols-[1fr_0fr_2fr] xl:grid-cols-[1.5fr_1.5fr_3fr]";
+			classHandler = "grid-cols-[1fr_0fr_0fr] sm:grid-cols-[1.5fr_0fr_2fr] xl:grid-cols-[1.5fr_1.5fr_3fr]";
 			break;
 		case Display.ROOMS:
-			classHandler = "grid-cols-[0fr_1fr_0fr] sm:grid-cols-[0fr_1fr_2fr] xl:grid-cols-[1.5fr_1.5fr_3fr]";
+			classHandler = "grid-cols-[0fr_1fr_0fr] sm:grid-cols-[0fr_1.5fr_2fr] xl:grid-cols-[1.5fr_1.5fr_3fr]";
 			break;
 		case Display.CHAT:
 			classHandler = "grid-cols-[0fr_0fr_1fr] sm:grid-cols-[0fr_0fr_2fr] xl:grid-cols-[1.5fr_1.5fr_3fr]";
