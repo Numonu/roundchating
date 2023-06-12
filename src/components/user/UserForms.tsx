@@ -31,13 +31,13 @@ export default function UserForms() {
 					className={`bg-sky-500 absolute w-1/2 h-[5%] bottom-0 transition-transform ${classHandler.guider}`}
 				></div>
 				<button
-					className="bg-white bg-opacity-50 w-full py-2"
+					className="w-full py-2"
 					onClick={() => setDisplay(Display.SIGNIN)}
 				>
 					<h2>Sign in</h2>
 				</button>
 				<button
-					className="bg-white bg-opacity-50 w-full py-2"
+					className="w-full py-2"
 					onClick={() => setDisplay(Display.SIGNUP)}
 				>
 					<h2>Sign up</h2>
