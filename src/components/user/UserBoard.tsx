@@ -8,6 +8,9 @@ export default function UserBoard() {
 				/>
 				<h1 className="text-xl opacity-70">@Anonymous</h1>
 				<h2 className="text-emerald-300 text-lg font-medium">Online</h2>
+				<p className="text-red-300 text-center mb-4">
+					Inicia sesion o crea una nueva cuenta para acceder! 🐱‍🚀
+				</p>
 			</div>
 	);
 }
