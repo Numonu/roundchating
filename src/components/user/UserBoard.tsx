@@ -1,4 +1,5 @@
 import { useContext } from "react";
+import { IoIosWifi } from "react-icons/io";
 import { IUserContextProps, UserContext } from "../../context/UserProvider";
 
 export default function UserBoard() {
@@ -13,10 +14,15 @@ export default function UserBoard() {
 					alt="user profile"
 				/>
 			</div>
-			<h1 className="text-xl opacity-70">
+			<h1 className="text-xl">
 				{usernameHandler ?? "@Anonymous"}
 			</h1>
-			<h2 className="text-emerald-300 text-lg font-medium">Online</h2>
+			<h2 className="text-emerald-300 flex items-center">
+				<IoIosWifi className="inline text-2xl mr-2"/>
+				<span className="text-lg font-medium">
+					Online
+				</span>
+			</h2>
 			<p className="text-red-300 text-center mb-4">
 				Inicia sesion o crea una nueva cuenta para acceder! 🐱‍🚀
 			</p>
