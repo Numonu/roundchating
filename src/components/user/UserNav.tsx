@@ -25,7 +25,7 @@ export default function UserNav() {
 	return (
 		<div className="flex flex-col gap-4">
 			<button
-				className="bg-indigo-600 py-2 rounded-md flex justify-center items-center gap-2 transition-colors hover:bg-indigo-700"
+				className="bg-indigo-600 py-2 rounded-md flex justify-center items-center gap-2 transition-colors hover:bg-indigo-700 xl:hidden"
 				onClick={goToRooms}
 			>
 				<FaPaperPlane className="text-base"/>
