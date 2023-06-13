@@ -3,8 +3,10 @@ import { db } from "../../firebase/config";
 import { useState , useContext} from "react";
 import { RiSendPlane2Fill } from "react-icons/ri";
 import { IRoomContextProps, RoomContext } from "../../context/RoomProvider";
+import { IUserContextProps, UserContext } from "../../context/UserProvider";
 
 export default function ChatWriter() {
+	const {user} = useContext(UserContext) as IUserContextProps;
 	const { room } = useContext(RoomContext) as IRoomContextProps;
 	const [message, setMessage] = useState<string>("");
 
@@ -13,7 +15,7 @@ export default function ChatWriter() {
 		const docSnap = await getDoc(docRef);
 		if(docSnap.exists()){
 			await updateDoc(docRef, {
-				timestamp : serverTimestamp()
+				lastupdate : serverTimestamp()
 			});
 		}
 		else{
@@ -31,7 +33,7 @@ export default function ChatWriter() {
 		try {
 			await addDoc(collection(db, room), {
 				message,
-				owner: "admin",
+				owner: user?.displayName,
 				timestamp: serverTimestamp(),
 			});
 			await updateStatus();
