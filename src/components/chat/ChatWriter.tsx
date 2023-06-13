@@ -1,6 +1,7 @@
 import { collection, serverTimestamp, addDoc, updateDoc, doc, getDoc, setDoc } from "firebase/firestore";
 import { db } from "../../firebase/config";
 import { useState , useContext} from "react";
+import { RiSendPlane2Fill } from "react-icons/ri";
 import { IRoomContextProps, RoomContext } from "../../context/RoomProvider";
 
 export default function ChatWriter() {
@@ -41,14 +42,17 @@ export default function ChatWriter() {
 	};
 
 	return (
-		<div className="bg-indigo-700">
+		<div className="bg-indigo-600 grid grid-cols-[1fr_min-content]">
 			<input
+				className="p-2 outline-none"
 				type="text"
 				placeholder="send message"
 				value={message}
 				onChange={(e) => setMessage(e.target.value)}
 			/>
-			<button onClick={sendMessage}>Send</button>
+			<button className="text-xl px-3" onClick={sendMessage}>
+				<RiSendPlane2Fill/>
+			</button>
 		</div>
 	);
 }
