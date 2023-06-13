@@ -6,7 +6,7 @@ import { ImEnter } from "react-icons/im";
 
 export default function RoomCard({key , room , }:{key:string | number , room :string}) {
 
-    const { setRoom } = useContext(RoomContext) as IRoomContextProps;
+    const { setRoom , room:currentRoom } = useContext(RoomContext) as IRoomContextProps;
 	const { setScene } = useContext(SceneContext) as ISceneContextProps;
 
     const goToRoom = (e: string) => {
@@ -20,11 +20,11 @@ export default function RoomCard({key , room , }:{key:string | number , room :st
 			key={key}
 			onClick={() => goToRoom(room)}
 		>
-            <div className="flex items-center gap-2">
+            <div className={`flex items-center gap-2 ${currentRoom == room && "text-indigo-600"}`}>
                 <BiWorld className="text-xl"/>
                 {room}
             </div>
-            <ImEnter className="text-xl"/>
+            <ImEnter className="text-xl text-neutral-50"/>
 		</button>
 	);
 }
