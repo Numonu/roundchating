@@ -9,8 +9,8 @@ import FluidButton from "./FluidButton";
 
 export default function SignIn() {
 	const [disabled , setDisabled] = useState(false);
-	const [email, setEmail] = useState<string>("");
-	const [password, setPassword] = useState<string>("");
+	const [email, setEmail] = useState("");
+	const [password, setPassword] = useState("");
 
 	const signin = async () => {
 		setDisabled(true);
