@@ -4,11 +4,13 @@ import { useState , useContext} from "react";
 import { RiSendPlane2Fill } from "react-icons/ri";
 import { IRoomContextProps, RoomContext } from "../../context/RoomProvider";
 import { IUserContextProps, UserContext } from "../../context/UserProvider";
+import { BiLoaderAlt } from "react-icons/bi";
 
 export default function ChatWriter() {
 	const {user} = useContext(UserContext) as IUserContextProps;
 	const { room } = useContext(RoomContext) as IRoomContextProps;
-	const [message, setMessage] = useState<string>("");
+	const [message, setMessage] = useState("");
+	const [loading , setLoading] = useState(false);
 
 	const updateStatus = async () => {
 		const docRef = doc(db, room, "status");
@@ -30,6 +32,7 @@ export default function ChatWriter() {
 	}
 
 	const sendMessage = async () => {
+		setLoading(true);
 		try {
 			await addDoc(collection(db, room), {
 				message,
@@ -41,6 +44,7 @@ export default function ChatWriter() {
 		} catch (error) {
 			return null;
 		}
+		setLoading(false);
 	};
 
 	return (
@@ -52,8 +56,10 @@ export default function ChatWriter() {
 				value={message}
 				onChange={(e) => setMessage(e.target.value)}
 			/>
-			<button className="text-xl px-3" onClick={sendMessage}>
-				<RiSendPlane2Fill/>
+			<button className="text-2xl px-3" onClick={sendMessage} disabled={loading}>
+				{
+					loading ? <BiLoaderAlt className="animate-spin"/> : <RiSendPlane2Fill/>
+				}
 			</button>
 		</div>
 	);
