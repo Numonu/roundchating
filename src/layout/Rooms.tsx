@@ -11,7 +11,7 @@ export default function Rooms() {
 					<input
 						className="bg-transparent grow outline-none"
 						type="text"
-						placeholder="Searh Some Room"
+						placeholder="Search for a room"
 					/>
 				</div>
 				<div>
