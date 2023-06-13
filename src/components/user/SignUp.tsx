@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import { useState } from "react";
 import { createUserWithEmailAndPassword , updateProfile } from "firebase/auth";
 import { auth } from "../../firebase/config";
 import { MdAlternateEmail } from "react-icons/md";
