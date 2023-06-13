@@ -8,11 +8,14 @@ import Input from "../Input";
 import { FaPaperPlane } from "react-icons/fa";
 import FluidButton from "./FluidButton";
 export default function SignUp() {
+	const [disabled , setDisabled] = useState(false);
 
-	const [email, setEmail] = useState<string>("");
-	const [password, setPassword] = useState<string>("");
+	const [username , setUsername] = useState("");
+	const [email, setEmail] = useState("");
+	const [password, setPassword] = useState("");
 
 	const signup = async () => {
+		setDisabled(true);
 		try {
 			await createUserWithEmailAndPassword(auth, email, password);
             alert("User Created!");
@@ -20,6 +23,7 @@ export default function SignUp() {
             alert("Fail!");
 			return null;
 		}
+		setDisabled(false);
 	};
 
 	return (
@@ -30,10 +34,10 @@ export default function SignUp() {
 				signup();
 			}}
 		>
-            <Input icon={<AiOutlineUser/>} id="signup-username" type="text" placeholder="username" onChange={e => setEmail(e)}/>
+            <Input icon={<AiOutlineUser/>} id="signup-username" type="text" placeholder="username" onChange={e => setUsername(e)}/>
 			<Input icon={<MdAlternateEmail/>} id="signup-email" type="email" placeholder="email" onChange={e => setEmail(e)}/>
             <Input icon={<BsShieldLock/>} id="signup-password" type="password" placeholder="password" onChange={e => setPassword(e)}/>
-			<FluidButton icon={<FaPaperPlane/>}>
+			<FluidButton icon={<FaPaperPlane/>} disabled={disabled}>
                 Send
             </FluidButton>
 		</form>
