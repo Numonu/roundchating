@@ -1,5 +1,5 @@
-import { useState } from "react";
-import { createUserWithEmailAndPassword } from "firebase/auth";
+import { useContext, useState } from "react";
+import { createUserWithEmailAndPassword , updateProfile } from "firebase/auth";
 import { auth } from "../../firebase/config";
 import { MdAlternateEmail } from "react-icons/md";
 import { BsShieldLock } from "react-icons/bs";
@@ -8,6 +8,7 @@ import Input from "../Input";
 import { FaPaperPlane } from "react-icons/fa";
 import FluidButton from "./FluidButton";
 export default function SignUp() {
+
 	const [disabled , setDisabled] = useState(false);
 
 	const [username , setUsername] = useState("");
@@ -18,7 +19,12 @@ export default function SignUp() {
 		setDisabled(true);
 		try {
 			await createUserWithEmailAndPassword(auth, email, password);
-            alert("User Created!");
+			if(auth.currentUser){
+				await updateProfile(auth.currentUser, {
+					displayName: username
+				})
+			}
+			else throw new Error("Something!");
 		} catch (error) {
             alert("Fail!");
 			return null;
