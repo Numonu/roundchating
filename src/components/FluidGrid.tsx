@@ -9,7 +9,7 @@ export default function FluidGrid() {
 	const { classHandler } = useContext(SceneContext) as ISceneContextProps;
 	return (
 		<div
-			className={`grid transition-[grid-template-columns] ${classHandler}`}
+			className={`grid transition-[grid-template-columns] duration-500 ${classHandler}`}
 		>
 				<User />
 				<RoomProvider>
