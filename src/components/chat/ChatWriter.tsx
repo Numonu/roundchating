@@ -8,7 +8,7 @@ import { BiLoaderAlt } from "react-icons/bi";
 
 export default function ChatWriter() {
 	const {user} = useContext(UserContext) as IUserContextProps;
-	const { room } = useContext(RoomContext) as IRoomContextProps;
+	const { room , loadingRoom} = useContext(RoomContext) as IRoomContextProps;
 	const [message, setMessage] = useState("");
 	const [loading , setLoading] = useState(false);
 
@@ -56,9 +56,9 @@ export default function ChatWriter() {
 				value={message}
 				onChange={(e) => setMessage(e.target.value)}
 			/>
-			<button className="text-2xl px-3" onClick={sendMessage} disabled={loading}>
+			<button className="text-2xl px-3" onClick={sendMessage} disabled={loading || loadingRoom}>
 				{
-					loading ? <BiLoaderAlt className="animate-spin"/> : <RiSendPlane2Fill/>
+					(loading || loadingRoom) ? <BiLoaderAlt className="animate-spin"/> : <RiSendPlane2Fill/>
 				}
 			</button>
 		</div>

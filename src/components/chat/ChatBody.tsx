@@ -20,14 +20,12 @@ type Message = {
 };
 export default function ChatBody() {
 	const {user} = useContext(UserContext) as IUserContextProps;
-	const { room } = useContext(RoomContext) as IRoomContextProps;
+	const { room , loadingRoom , setLoadingRoom } = useContext(RoomContext) as IRoomContextProps;
 
 	const [messages, setMessages] = useState<Message[]>([]);
-	const [onRequest , setOnRequest] = useState(false);
 
 	const requestMessages = () => {
-		setOnRequest(true);
-		//
+
 		const q = query(collection(db, room), orderBy("timestamp", "asc"));
 		const result: Message[] = [];
 
@@ -36,9 +34,9 @@ export default function ChatBody() {
 				result.push(doc.data() as Message);
 			});
 			setMessages(result);
-			setOnRequest(false);
+			setLoadingRoom(false);
 		});
-		//
+		
 	};
 
 	useEffect(requestMessages, [room]);
@@ -66,7 +64,7 @@ export default function ChatBody() {
 				});
 				return query;
 			})()}
-			<ChatSkeleton enable={onRequest}/>
+			<ChatSkeleton enable={loadingRoom}/>
 		</div>
 	);
 }
