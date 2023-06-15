@@ -27,7 +27,6 @@ export default function SignUp() {
 			else throw new Error("Something!");
 		} catch (error) {
             alert("Fail!");
-			return null;
 		}
 		setDisabled(false);
 	};

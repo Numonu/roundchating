@@ -8,6 +8,7 @@ import { FaPaperPlane } from "react-icons/fa";
 import FluidButton from "./FluidButton";
 
 export default function SignIn() {
+
 	const [disabled , setDisabled] = useState(false);
 	const [email, setEmail] = useState("");
 	const [password, setPassword] = useState("");
@@ -19,7 +20,6 @@ export default function SignIn() {
             alert("User Login!");
 		} catch (error) {
             alert("Fail!");
-			return null;
 		}
 		setDisabled(false);
 	};
@@ -39,4 +39,5 @@ export default function SignIn() {
             </FluidButton>
 		</form>
 	);
+
 }

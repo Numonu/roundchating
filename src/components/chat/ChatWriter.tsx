@@ -42,7 +42,7 @@ export default function ChatWriter() {
 			await updateStatus();
 			setMessage("");
 		} catch (error) {
-			return null;
+			alert("Fail");
 		}
 		setLoading(false);
 	};
