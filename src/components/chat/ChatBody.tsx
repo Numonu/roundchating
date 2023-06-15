@@ -11,6 +11,8 @@ import { useEffect, useState, useContext } from "react";
 import { IRoomContextProps, RoomContext } from "../../context/RoomProvider";
 import ChatCard from "./ChatCard";
 import { IUserContextProps, UserContext } from "../../context/UserProvider";
+import { AiOutlineLoading3Quarters } from "react-icons/ai";
+import ChatSkeleton from "./ChatSkeleton";
 
 type Message = {
 	owner: string;
@@ -20,17 +22,24 @@ type Message = {
 export default function ChatBody() {
 	const {user} = useContext(UserContext) as IUserContextProps;
 	const { room } = useContext(RoomContext) as IRoomContextProps;
+
 	const [messages, setMessages] = useState<Message[]>([]);
+	const [onRequest , setOnRequest] = useState(false);
 
 	const requestMessages = () => {
+		setOnRequest(true);
+		//
 		const q = query(collection(db, room), orderBy("timestamp", "asc"));
 		const result: Message[] = [];
+
 		getDocs(q).then((querySnapshot) => {
 			querySnapshot.forEach((doc) => {
 				result.push(doc.data() as Message);
 			});
 			setMessages(result);
+			setOnRequest(false);
 		});
+		//
 	};
 
 	useEffect(requestMessages, [room]);
@@ -41,7 +50,7 @@ export default function ChatBody() {
 	}, [room]);
 
 	return (
-		<div className="px-2 py-4 flex flex-col gap-2">
+		<div className="relative px-2 py-4 flex flex-col gap-2">
 			{(() => {
 				let lastOwner = "";
 				const query = messages.map((e,i,arr) => {
@@ -58,6 +67,7 @@ export default function ChatBody() {
 				});
 				return query;
 			})()}
+			<ChatSkeleton enable={onRequest}/>
 		</div>
 	);
 }
