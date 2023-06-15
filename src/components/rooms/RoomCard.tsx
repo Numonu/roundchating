@@ -1,4 +1,4 @@
-import { useContext, useEffect } from "react";
+import { useContext } from "react";
 import { IRoomContextProps, RoomContext } from "../../context/RoomProvider";
 import { Display, ISceneContextProps, SceneContext } from "../../context/SceneProvider";
 import { BiWorld } from "react-icons/bi";
@@ -6,7 +6,7 @@ import { ImEnter } from "react-icons/im";
 
 export default function RoomCard({key , room , }:{key:string | number , room :string}) {
 
-    const { setRoom , room:currentRoom , setLoadingRoom } = useContext(RoomContext) as IRoomContextProps;
+    const { setRoom , room:currentRoom } = useContext(RoomContext) as IRoomContextProps;
 	const { setScene } = useContext(SceneContext) as ISceneContextProps;
 
     const goToRoom = (e: string) => {
