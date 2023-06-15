@@ -6,7 +6,7 @@ const enum Display {
 	SIGNUP,
 }
 export default function UserForms() {
-	const [display, setDisplay] = useState<Display>(Display.SIGNUP);
+	const [display, setDisplay] = useState<Display>(Display.SIGNIN);
 	//
 	const classHandler = {
         guider : "",
