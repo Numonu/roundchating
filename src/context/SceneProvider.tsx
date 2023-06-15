@@ -1,4 +1,5 @@
-import { ReactNode, createContext, useState } from "react";
+import { ReactNode, createContext, useContext, useState } from "react";
+import { IUserContextProps, UserContext } from "./UserProvider";
 
 export enum Display {
 	CHAT = "chat",
@@ -13,9 +14,11 @@ export interface ISceneContextProps {
 export const SceneContext = createContext<ISceneContextProps | null>(null);
 
 export default function SceneProvider({children}:{children:ReactNode}){
-    const [scene, setScene] = useState<Display>(Display.CHAT);
+    const [scene, setScene] = useState<Display>(Display.USER);
+	const {user} = useContext(UserContext) as IUserContextProps;
     //
 	let classHandler;
+	const noUser = "grid-cols-[1fr_0fr_0fr]";
 	switch (scene) {
 		case Display.USER:
 			classHandler = "grid-cols-[1fr_0fr_0fr] sm:grid-cols-[1.5fr_0fr_2fr] xl:grid-cols-[1.5fr_1.5fr_3fr]";
@@ -26,13 +29,10 @@ export default function SceneProvider({children}:{children:ReactNode}){
 		case Display.CHAT:
 			classHandler = "grid-cols-[0fr_0fr_1fr] sm:grid-cols-[0fr_0fr_2fr] xl:grid-cols-[1.5fr_1.5fr_3fr]";
 			break;
-		default:
-            classHandler = "grid-cols-[0fr_0fr_1fr]";
-			break;
 	}
 	//
     return (
-        <SceneContext.Provider value={{ setScene, scene , classHandler }}>
+        <SceneContext.Provider value={{ setScene, scene , classHandler: user ? classHandler : noUser}}>
 			{children}
 		</SceneContext.Provider>
     )
