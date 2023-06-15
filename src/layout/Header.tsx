@@ -13,9 +13,6 @@ export default function Header() {
 		case Display.ROOMS:
 			functionHanlder = () => setScene(Display.USER);
 			break;
-		case Display.USER:
-			functionHanlder = () => setScene(Display.CHAT);
-			break;
 		default:
 			break;
 	}
