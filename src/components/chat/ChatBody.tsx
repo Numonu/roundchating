@@ -11,7 +11,6 @@ import { useEffect, useState, useContext } from "react";
 import { IRoomContextProps, RoomContext } from "../../context/RoomProvider";
 import ChatCard from "./ChatCard";
 import { IUserContextProps, UserContext } from "../../context/UserProvider";
-import { AiOutlineLoading3Quarters } from "react-icons/ai";
 import ChatSkeleton from "./ChatSkeleton";
 
 type Message = {
