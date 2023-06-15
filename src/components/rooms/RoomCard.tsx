@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { IRoomContextProps, RoomContext } from "../../context/RoomProvider";
 import { Display, ISceneContextProps, SceneContext } from "../../context/SceneProvider";
 import { BiWorld } from "react-icons/bi";
@@ -12,9 +12,8 @@ export default function RoomCard({key , room , }:{key:string | number , room :st
     const goToRoom = (e: string) => {
 		setRoom(e);
 		setScene(Display.CHAT);
-		setLoadingRoom(true);
 	};
-
+	
 	return (
 		<button
 			className="border-zinc-600 flex justify-between items-center w-full p-4 border-b-2 hover:bg-zinc-950 transition-colors"
