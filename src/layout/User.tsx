@@ -9,7 +9,7 @@ export default function User() {
 
 	return (
 		<div className="bg-gradient-to-t from-zinc-950 to-zinc-900 overflow-hidden">
-			<div className="px-4">
+			<div className="px-4 max-w-[500px] mx-auto">
 				<UserBoard />
 				{user ? <UserNav /> : <UserForms />}
 			</div>
