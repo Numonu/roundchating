@@ -1,26 +1,25 @@
 interface IChatCardProps {
-	message: string;
-	owner: string;
-	disablePic: boolean;
-	ownMessage: boolean;
+	config : {
+		message: string;
+		owner: string;
+		disablePic: boolean;
+		ownMessage: boolean;
+	}
 }
 export default function ChatCard({
-	message,
-	owner,
-	disablePic,
-	ownMessage,
+	config
 }: IChatCardProps) {
 	return (
-		<div className={`flex items-center gap-2 ${ownMessage ? "self-end" : "self-start"}`}>
-			{!ownMessage && (
+		<div className={`flex items-center gap-2 ${config.ownMessage ? "self-end" : "self-start"}`}>
+			{!config.ownMessage && (
 				<img
-					className={`w-8 aspect-square rounded-full ${disablePic && "invisible"}`}
-					src={`https://robohash.org/${owner}`}
-					alt={owner}
+					className={`w-8 aspect-square rounded-full ${config.disablePic && "invisible"}`}
+					src={`https://robohash.org/${config.owner}`}
+					alt={config.owner}
 				/>
 			)}
-			<div className={`max-w-xs p-2 rounded-xl md:max-w-md ${ownMessage ? "bg-indigo-600 rounded-br-none" : "bg-zinc-900 rounded-bl-none"}`}>
-				{message}
+			<div className={`max-w-xs p-2 rounded-xl md:max-w-md ${config.ownMessage ? "bg-indigo-600 rounded-br-none" : "bg-zinc-900 rounded-bl-none"}`}>
+				{config.message}
 			</div>
 		</div>
 	);

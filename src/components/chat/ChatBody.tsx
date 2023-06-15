@@ -34,6 +34,7 @@ export default function ChatBody() {
 	};
 
 	useEffect(requestMessages, [room]);
+
 	useEffect(() => {
 		const unsub = onSnapshot(doc(db, room, "status"), requestMessages);
 		return unsub;
@@ -46,10 +47,14 @@ export default function ChatBody() {
 				const query = messages.map((e,i,arr) => {
 					lastOwner = e.owner;
 					//
-					const disablePic = arr[i + 1]?.owner === lastOwner;
-					const ownMessage = user?.displayName === lastOwner;
+					const config = {
+						message : e.message,
+						owner : e.owner,
+						ownMessage : user?.displayName === lastOwner,
+						disablePic : arr[i + 1]?.owner === lastOwner
+					}
 					//
-					return <ChatCard message={e.message} owner={e.owner} ownMessage={ownMessage} disablePic={disablePic}/>;
+					return <ChatCard config={config}/>;
 				});
 				return query;
 			})()}
