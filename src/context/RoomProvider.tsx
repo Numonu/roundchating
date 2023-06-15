@@ -1,4 +1,4 @@
-import { ReactNode, createContext , useState} from "react";
+import { ReactNode, createContext , useEffect, useState} from "react";
 
 export interface IRoomContextProps {
     room : string
@@ -11,6 +11,10 @@ export default function RoomProvider({children}:{children:ReactNode}){
     const [room , setRoom] = useState("Global");
     const [loadingRoom , setLoadingRoom] = useState(false);
 	//
+    useEffect(() => {
+		setLoadingRoom(true);
+	} , [room]);
+    //
     return (
         <RoomContext.Provider value={{room , setRoom , loadingRoom , setLoadingRoom}}>
 			{children}
