@@ -4,13 +4,13 @@ import { IUserContextProps, UserContext } from "../../context/UserProvider";
 
 export default function UserBoard() {
 	const { user } = useContext(UserContext) as IUserContextProps;
-	const usernameHandler = user && (user.displayName || user?.email);
+	const usernameHandler = user && (user?.displayName || user?.email);
 	return (
 		<div className="flex flex-col items-center py-8">
 			<div className="bg-gradient-to-t from-pink-500 via-orange-500 to-yellow-500 w-1/3 mb-4 p-1 max-w-[200px] aspect-square rounded-full">
 				<img
 					className="bg-zinc-800 rounded-full"
-					src="https://robohash.org/leidy.png"
+					src={`https://robohash.org/${usernameHandler}.png`}
 					alt="user profile"
 				/>
 			</div>
