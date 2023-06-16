@@ -2,10 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
-.chat::-webkit-scrollbar {
+.scroll::-webkit-scrollbar {
     width: .5em;
 }
-.chat::-webkit-scrollbar-thumb {
+.scroll::-webkit-scrollbar-thumb {
     background-color: rgb(20, 20, 20);
     border-radius: 5rem;
 }
