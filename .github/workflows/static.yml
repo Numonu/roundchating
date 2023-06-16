@@ -24,12 +24,12 @@ jobs:
   # Single deploy job since we're just deploying
   deploy:
     env:
-      VITE_API_KEY: ${{ secrets.VITE_API_KEY }}
-      VITE_AUTH_DOMAIN : ${{secrets.VITE_AUTH_DOMAIN}}
-      VITE_PROJECT_ID : ${{secrets.VITE_PROJECT_ID}}
-      VITE_STORAGE_BUCKET : ${{secrets.VITE_STORAGE_BUCKET}}
-      VITE_MESSAGIN_SENDER_ID : ${{secrets.VITE_MESSAGIN_SENDER_ID}}
-      VITE_APP_ID : ${{secrets.VITE_APP_ID}}
+      VITE_API_KEY: ${{import.meta.env.VITE_API_KEY}}
+      VITE_AUTH_DOMAIN : ${{import.meta.env.VITE_AUTH_DOMAIN}}
+      VITE_PROJECT_ID : ${{import.meta.env.VITE_PROJECT_ID}}
+      VITE_STORAGE_BUCKET : ${{import.meta.env.VITE_STORAGE_BUCKET}}
+      VITE_MESSAGIN_SENDER_ID : ${{import.meta.env.VITE_MESSAGIN_SENDER_ID}}
+      VITE_APP_ID : ${{import.meta.env.VITE_APP_ID}}
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
