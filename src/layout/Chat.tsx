@@ -1,6 +1,6 @@
 import ChatBody from "../components/chat/ChatBody";
 import ChatWriter from "../components/chat/ChatWriter";
-import RoomTitle from "../components/rooms/RoomTitle";
+import RoomTitle from "../components/chat/RoomTitle";
 
 export default function Chat() {
 	
