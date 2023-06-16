@@ -1,11 +1,14 @@
 import { useContext, useState } from "react";
 import { IRoomContextProps, RoomContext } from "../../context/RoomProvider";
+import { Display, ISceneContextProps, SceneContext } from "../../context/SceneProvider";
 
 export default function RoomPopup({ callback }: { callback: () => void }) {
 	const [roomName, setRoomName] = useState("");
 	const { setRoom } = useContext(RoomContext) as IRoomContextProps;
+	const {setScene} = useContext(SceneContext) as ISceneContextProps;
 
 	const connectToNewRoom = () => {
+		setScene(Display.CHAT);
 		setRoom(roomName);
 		callback();
 	};
