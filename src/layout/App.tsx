@@ -5,7 +5,7 @@ import UserProvider from "../context/UserProvider";
 
 export default function App() {
 	return (
-		<div className="h-screen grid grid-rows-[min-content_1fr] text-neutral-50">
+		<div className="text-neutral-50 h-screen grid grid-rows-[min-content_1fr] overflow-hidden">
 			<UserProvider>
 				<SceneProvider>
 					<Header />
