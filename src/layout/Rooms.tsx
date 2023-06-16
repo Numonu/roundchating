@@ -1,7 +1,7 @@
 import { BsSearch } from "react-icons/bs";
 import RoomCard from "../components/rooms/RoomCard";
 import { useState } from "react";
-import { AiOutlinePlus } from "react-icons/ai";
+import RoomActions from "../components/rooms/RoomActions";
 
 const roomList = ["North","South" ,"East", "West"];
 export default function Rooms() {
@@ -17,9 +17,7 @@ export default function Rooms() {
 						placeholder="Search for a room"
 						onChange={(e) => setSearch(e.target.value)}
 					/>
-					<button className="p-2 rounded-full hover:bg-zinc-600 transition-colors cursor-pointer">
-						<AiOutlinePlus className="text-2xl"/>
-					</button>
+					<RoomActions/>
 				</div>
 				<div>
 					{roomList.filter(e => e.includes(search)).map((e, i) => {
