@@ -26,7 +26,7 @@ export default function ChatWriter() {
 					lastupdate : serverTimestamp()
 				})
 			} catch (error) {
-				return null;
+				//
 			}
 		}
 	}
@@ -42,7 +42,7 @@ export default function ChatWriter() {
 			await updateStatus();
 			setMessage("");
 		} catch (error) {
-			alert("Fail");
+			//
 		}
 		setLoading(false);
 	};
