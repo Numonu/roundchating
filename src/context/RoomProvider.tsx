@@ -8,7 +8,7 @@ export interface IRoomContextProps {
 }
 export const RoomContext = createContext<IRoomContextProps | null>(null);
 export default function RoomProvider({children}:{children:ReactNode}){
-    const [room , setRoom] = useState("Global");
+    const [room , setRoom] = useState("North");
     const [loadingRoom , setLoadingRoom] = useState(false);
 	//
     useEffect(() => {
