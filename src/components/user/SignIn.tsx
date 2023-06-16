@@ -8,8 +8,7 @@ import { FaPaperPlane } from "react-icons/fa";
 import FluidButton from "./FluidButton";
 
 export default function SignIn() {
-
-	const [disabled , setDisabled] = useState(false);
+	const [disabled, setDisabled] = useState(false);
 	const [email, setEmail] = useState("");
 	const [password, setPassword] = useState("");
 
@@ -18,7 +17,7 @@ export default function SignIn() {
 		try {
 			await signInWithEmailAndPassword(auth, email, password);
 		} catch (error) {
-            //
+			//
 		}
 		setDisabled(false);
 	};
@@ -31,12 +30,23 @@ export default function SignIn() {
 				signin();
 			}}
 		>
-            <Input icon={<MdAlternateEmail/>} id="signin-email" type="email" placeholder="email" onChange={e => setEmail(e)}/>
-            <Input icon={<BsShieldLock/>} id="signin-password" type="password" placeholder="password" onChange={e => setPassword(e)}/>
-            <FluidButton icon={<FaPaperPlane/>} disabled={disabled}>
-                Send
-            </FluidButton>
+			<Input
+				icon={<MdAlternateEmail />}
+				id="signin-email"
+				type="email"
+				placeholder="email"
+				onChange={(e) => setEmail(e)}
+			/>
+			<Input
+				icon={<BsShieldLock />}
+				id="signin-password"
+				type="password"
+				placeholder="password"
+				onChange={(e) => setPassword(e)}
+			/>
+			<FluidButton icon={<FaPaperPlane />} disabled={disabled}>
+				Send
+			</FluidButton>
 		</form>
 	);
-
 }
