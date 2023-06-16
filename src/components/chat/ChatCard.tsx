@@ -13,7 +13,7 @@ export default function ChatCard({
 		<div className={`flex items-center gap-2 ${config.ownMessage ? "self-end" : "self-start"}`}>
 			{!config.ownMessage && (
 				<img
-					className={`w-8 aspect-square rounded-full ${config.disablePic && "invisible"}`}
+					className={`bg-neutral-50 w-8 aspect-square rounded-full ${config.disablePic && "invisible"}`}
 					src={`https://robohash.org/${config.owner}`}
 					alt={config.owner}
 				/>
