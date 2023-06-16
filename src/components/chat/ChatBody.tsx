@@ -13,7 +13,7 @@ export default function ChatBody() {
 
 	return (
 		<div
-			className="bg-zinc-800 relative"
+			className="relative"
 		>
 			<div className="absolute inset-0 px-2 py-4 flex flex-col gap-2 overflow-y-scroll">
 				{(() => {
