@@ -24,7 +24,7 @@ export default function ChatBody() {
 						const config = {
 							message: e.message,
 							owner: e.owner,
-							ownMessage: user?.displayName === lastOwner,
+							ownMessage: (user?.displayName || user?.email) === lastOwner,
 							disablePic: arr[i + 1]?.owner === lastOwner,
 						};
 						//

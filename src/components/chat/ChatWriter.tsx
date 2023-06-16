@@ -36,7 +36,7 @@ export default function ChatWriter() {
 		try {
 			await addDoc(collection(db, room), {
 				message,
-				owner: user?.displayName,
+				owner: user?.displayName || user?.email,
 				timestamp: serverTimestamp(),
 			});
 			await updateStatus();
