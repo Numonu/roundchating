@@ -21,7 +21,7 @@ export default function UserBoard() {
 			</h2>
 			{!user && (
 				<p className="text-red-300 text-center mb-4">
-					Inicia sesion o crea una nueva cuenta para acceder! 🐱‍🚀
+					Login or create a new account to access! 🐱‍🚀
 				</p>
 			)}
 		</div>
