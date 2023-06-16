@@ -8,11 +8,13 @@ export default function User() {
 	const { user } = useContext(UserContext) as IUserContextProps;
 
 	return (
-		<div className="bg-zinc-950 overflow-hidden">
+		<div className="bg-zinc-950 scroll relative overflow-y-auto">
+			<div className="absolute inset-0">
 				<div className="px-4 max-w-[450px] mx-auto">
 					<UserBoard />
 					{user ? <UserNav /> : <UserForms />}
 				</div>
+			</div>
 		</div>
 	);
 }
