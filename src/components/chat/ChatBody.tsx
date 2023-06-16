@@ -15,7 +15,7 @@ export default function ChatBody() {
 		<div
 			className="relative"
 		>
-			<div className="absolute inset-0 px-2 py-4 flex flex-col gap-2 overflow-y-scroll">
+			<div className="chat absolute inset-0 px-2 py-4 flex flex-col gap-2 overflow-y-scroll">
 				{(() => {
 					let lastOwner = "";
 					const query = messages.map((e, i, arr) => {
