@@ -24,9 +24,9 @@ export default function SignUp() {
 					displayName: username
 				})
 			}
-			else throw new Error("Something!");
+			else throw new Error();
 		} catch (error) {
-            alert("Fail!");
+			//
 		}
 		setDisabled(false);
 	};

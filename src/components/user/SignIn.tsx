@@ -17,9 +17,8 @@ export default function SignIn() {
 		setDisabled(true);
 		try {
 			await signInWithEmailAndPassword(auth, email, password);
-            alert("User Login!");
 		} catch (error) {
-            alert("Fail!");
+            //
 		}
 		setDisabled(false);
 	};
