@@ -9,10 +9,10 @@ export default function User() {
 
 	return (
 		<div className="bg-zinc-950 overflow-hidden">
-			<div className="px-4 max-w-[500px] mx-auto">
-				<UserBoard />
-				{user ? <UserNav /> : <UserForms />}
-			</div>
+				<div className="px-4 max-w-[450px] mx-auto">
+					<UserBoard />
+					{user ? <UserNav /> : <UserForms />}
+				</div>
 		</div>
 	);
 }
