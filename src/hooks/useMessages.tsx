@@ -21,8 +21,10 @@ export default function useMesagges(){
 			querySnapshot.forEach((doc) => {
 				result.push(doc.data() as Message);
 			});
-			setMessages(result);
-			setLoadingRoom(false);
+			new Promise(res => setTimeout(res , 1000)).then(() => {
+				setMessages(result);
+				setLoadingRoom(false);
+			})
 		});
 		
 	};
