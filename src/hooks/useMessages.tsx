@@ -1,12 +1,13 @@
+import { useState , useContext , useEffect , useCallback } from "react";
+import { IRoomContextProps, RoomContext } from "../context/RoomProvider";
+import { collection, doc, getDocs, onSnapshot, orderBy, query } from "firebase/firestore";
+import { db } from "../firebase/config";
+
 type Message = {
 	owner: string;
 	message: string;
 	timestamp: string;
 };
-import { useState , useContext , useEffect , useCallback } from "react";
-import { IRoomContextProps, RoomContext } from "../context/RoomProvider";
-import { collection, doc, getDocs, onSnapshot, orderBy, query } from "firebase/firestore";
-import { db } from "../firebase/config";
 
 export default function useMesagges(){
 	const [messages, setMessages] = useState<Message[]>([]);
