@@ -1,6 +1,7 @@
 import { RiSendPlane2Fill } from "react-icons/ri";
 import { ImSpinner9 } from "react-icons/im";
 import useWriter from "../../hooks/useWriter";
+import Spiner from "../Spiner";
 export default function ChatWriter() {
 	
 	const {message , setMessage , loading , loadingRoom , sendMessage} = useWriter();
@@ -16,7 +17,7 @@ export default function ChatWriter() {
 			/>
 			<button className="bg-indigo-600 text-2xl px-3" onClick={sendMessage} disabled={loading || loadingRoom}>
 				{
-					(loading || loadingRoom) ? <ImSpinner9 className="animate-spin"/> : <RiSendPlane2Fill/>
+					(loading || loadingRoom) ? <Spiner/> : <RiSendPlane2Fill/>
 				}
 			</button>
 		</div>

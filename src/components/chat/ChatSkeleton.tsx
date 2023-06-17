@@ -1,4 +1,4 @@
-import { ImSpinner9 } from "react-icons/im";
+import Spiner from "../Spiner";
 
 export default function ChatSkeleton({enable}:{enable:boolean}) {
 	return (
@@ -7,7 +7,9 @@ export default function ChatSkeleton({enable}:{enable:boolean}) {
 				enable ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"
 			}`}
 		>
-			<ImSpinner9 className="text-3xl animate-spin" />
+			<span className="text-3xl">
+				<Spiner/>
+			</span>
 		</div>
 	);
 }
