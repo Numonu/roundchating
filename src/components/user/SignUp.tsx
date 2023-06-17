@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { createUserWithEmailAndPassword , updateProfile } from "firebase/auth";
+import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
 import { auth } from "../../firebase/config";
 import { MdAlternateEmail } from "react-icons/md";
 import { BsShieldLock } from "react-icons/bs";
@@ -8,10 +8,9 @@ import Input from "../Input";
 import { FaPaperPlane } from "react-icons/fa";
 import FluidButton from "./FluidButton";
 export default function SignUp() {
+	const [disabled, setDisabled] = useState(false);
 
-	const [disabled , setDisabled] = useState(false);
-
-	const [username , setUsername] = useState("");
+	const [username, setUsername] = useState("");
 	const [email, setEmail] = useState("");
 	const [password, setPassword] = useState("");
 
@@ -19,12 +18,11 @@ export default function SignUp() {
 		setDisabled(true);
 		try {
 			await createUserWithEmailAndPassword(auth, email, password);
-			if(auth.currentUser){
+			if (auth.currentUser) {
 				await updateProfile(auth.currentUser, {
-					displayName: username
-				})
-			}
-			else throw new Error();
+					displayName: username,
+				});
+			} else throw new Error();
 		} catch (error) {
 			//
 		}
@@ -39,12 +37,34 @@ export default function SignUp() {
 				signup();
 			}}
 		>
-            <Input icon={<AiOutlineUser/>} id="signup-username" type="text" placeholder="username" onChange={e => setUsername(e)}/>
-			<Input icon={<MdAlternateEmail/>} id="signup-email" type="email" placeholder="email" onChange={e => setEmail(e)}/>
-            <Input icon={<BsShieldLock/>} id="signup-password" type="password" placeholder="password" onChange={e => setPassword(e)}/>
-			<FluidButton icon={<FaPaperPlane/>} disabled={disabled}>
-                Send
-            </FluidButton>
+			<Input
+				icon={<AiOutlineUser />}
+				id="signup-username"
+				type="text"
+				placeholder="username"
+				onChange={(e) => setUsername(e)}
+			/>
+			<Input
+				icon={<MdAlternateEmail />}
+				id="signup-email"
+				type="email"
+				placeholder="email"
+				pattern="^[^\s@]+@[^\s@]+\.[^\s@]+$"
+				title="El correo debe seguir este formato 'example@example.com'"
+				onChange={(e) => setEmail(e)}
+			/>
+			<Input
+				icon={<BsShieldLock />}
+				id="signup-password"
+				type="password"
+				placeholder="password"
+				pattern="^.{6,}$"
+				title="The password must be at least 6 characters long"
+				onChange={(e) => setPassword(e)}
+			/>
+			<FluidButton icon={<FaPaperPlane />} disabled={disabled}>
+				Send
+			</FluidButton>
 		</form>
 	);
 }
