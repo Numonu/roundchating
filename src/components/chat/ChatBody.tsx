@@ -34,11 +34,10 @@ export default function ChatBody() {
 						lastOwner = e.owner;
 						//
 						const config = {
+							key : i,
 							message: e.message,
 							owner: e.owner,
-							ownMessage:
-								(user?.displayName || user?.email) ===
-								lastOwner,
+							ownMessage: (user?.displayName || user?.email) === lastOwner,
 							disablePic: arr[i + 1]?.owner === lastOwner,
 						};
 						//
