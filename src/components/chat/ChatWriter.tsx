@@ -1,51 +1,9 @@
-import { collection, serverTimestamp, addDoc, updateDoc, doc, getDoc, setDoc } from "firebase/firestore";
-import { db } from "../../firebase/config";
-import { useState , useContext} from "react";
 import { RiSendPlane2Fill } from "react-icons/ri";
-import { IRoomContextProps, RoomContext } from "../../context/RoomProvider";
-import { IUserContextProps, UserContext } from "../../context/UserProvider";
 import { BiLoaderAlt } from "react-icons/bi";
-
+import useWriter from "../../hooks/useWriter";
 export default function ChatWriter() {
-	const {user} = useContext(UserContext) as IUserContextProps;
-	const { room , loadingRoom} = useContext(RoomContext) as IRoomContextProps;
-	const [message, setMessage] = useState("");
-	const [loading , setLoading] = useState(false);
-
-	const updateStatus = async () => {
-		const docRef = doc(db, room, "status");
-		const docSnap = await getDoc(docRef);
-		if(docSnap.exists()){
-			await updateDoc(docRef, {
-				lastupdate : serverTimestamp()
-			});
-		}
-		else{
-			try {
-				await setDoc(doc(db , room , "status") , {
-					lastupdate : serverTimestamp()
-				})
-			} catch (error) {
-				//
-			}
-		}
-	}
-
-	const sendMessage = async () => {
-		setLoading(true);
-		try {
-			await addDoc(collection(db, room), {
-				message,
-				owner: user?.displayName || user?.email,
-				timestamp: serverTimestamp(),
-			});
-			await updateStatus();
-			setMessage("");
-		} catch (error) {
-			//
-		}
-		setLoading(false);
-	};
+	
+	const {message , setMessage , loading , loadingRoom , sendMessage} = useWriter();
 
 	return (
 		<div className="grid grid-cols-[1fr_min-content]">
