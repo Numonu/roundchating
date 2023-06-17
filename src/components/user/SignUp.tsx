@@ -63,7 +63,7 @@ export default function SignUp() {
 				onChange={(e) => setPassword(e)}
 			/>
 			<FluidButton icon={<FaPaperPlane />} disabled={disabled}>
-				Send
+				Sign up
 			</FluidButton>
 		</form>
 	);
