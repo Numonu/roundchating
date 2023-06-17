@@ -4,7 +4,7 @@ import { Display, ISceneContextProps, SceneContext } from "../../context/ScenePr
 import { BiWorld } from "react-icons/bi";
 import { ImEnter } from "react-icons/im";
 
-export default function RoomCard({key , room , }:{key:string | number , room :string}) {
+export default function RoomCard({room  }:{room :string}) {
 
     const { setRoom , room:currentRoom } = useContext(RoomContext) as IRoomContextProps;
 	const { setScene } = useContext(SceneContext) as ISceneContextProps;
@@ -17,7 +17,6 @@ export default function RoomCard({key , room , }:{key:string | number , room :st
 	return (
 		<button
 			className="border-zinc-600 flex justify-between items-center w-full p-4 border-b-2 hover:bg-zinc-950 transition-colors"
-			key={key}
 			onClick={() => goToRoom(room)}
 		>
             <div className={`flex items-center gap-2 ${currentRoom == room && "text-indigo-600"}`}>

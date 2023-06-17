@@ -1,6 +1,5 @@
 interface IChatCardProps {
 	config : {
-		key : number,
 		message: string;
 		owner: string;
 		disablePic: boolean;
@@ -11,7 +10,7 @@ export default function ChatCard({
 	config
 }: IChatCardProps) {
 	return (
-		<div className={`flex items-center gap-2 ${config.ownMessage ? "self-end" : "self-start"}`} key={config.key}>
+		<div className={`flex items-center gap-2 ${config.ownMessage ? "self-end" : "self-start"}`}>
 			{!config.ownMessage && (
 				<img
 					className={`bg-neutral-50 w-8 aspect-square rounded-full ${config.disablePic && "invisible"}`}
