@@ -1,4 +1,4 @@
-import { AiOutlineLoading3Quarters } from "react-icons/ai";
+import { ImSpinner9 } from "react-icons/im";
 
 export default function ChatSkeleton({enable}:{enable:boolean}) {
 	return (
@@ -7,7 +7,7 @@ export default function ChatSkeleton({enable}:{enable:boolean}) {
 				enable ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"
 			}`}
 		>
-			<AiOutlineLoading3Quarters className="text-3xl animate-spin" />
+			<ImSpinner9 className="text-3xl animate-spin" />
 		</div>
 	);
 }
