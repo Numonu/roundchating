@@ -50,7 +50,7 @@ export default function SignUp() {
 				type="email"
 				placeholder="email"
 				pattern="^[^\s@]+@[^\s@]+\.[^\s@]+$"
-				title="El correo debe seguir este formato 'example@example.com'"
+				title="Mail should follow this 'example@example.com' format"
 				onChange={(e) => setEmail(e)}
 			/>
 			<Input
