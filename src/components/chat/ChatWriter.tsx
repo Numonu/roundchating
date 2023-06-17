@@ -1,5 +1,4 @@
 import { RiSendPlane2Fill } from "react-icons/ri";
-import { ImSpinner9 } from "react-icons/im";
 import useWriter from "../../hooks/useWriter";
 import Spiner from "../Spiner";
 export default function ChatWriter() {
